@@ -18,8 +18,9 @@ static void sig_hndlr(int signo)
 int main(void)
 {
 	pid_t pid = getpid();
-	const struct sigaction sig_act = { .sa_handler = sig_hndlr, .sa_flags =
-			SA_SIGINFO, /* Queue signals if multiple */
+	const struct sigaction sig_act = {
+      .sa_handler = sig_hndlr,
+      .sa_flags = SA_SIGINFO, /* Queue signals if multiple */
 	};
 
 	printf(TAG "Running... \n", pid);

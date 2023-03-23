@@ -95,7 +95,7 @@ void process_args(char **argv, pid_t *srv_pid_p, int *operand1_p, int *operand2_
 	}
 	else if (op2_long > INT_MAX)
 	{
-		fprintf(stderr, "Operand cannot be greater than %u\n", UINT_MAX);
+		fprintf(stderr, "Operand cannot be greater than %d\n", INT_MAX);
 		print_usage(argv[0]);
 		exit(EXIT_FAILURE);
 	}
@@ -151,14 +151,11 @@ int main(int argc, char **argv)
 	/* Begin message passing */
 
 	coid = ConnectAttach(ND_LOCAL_NODE, srv_pid, chid, _NTO_SIDE_CHANNEL, 0);
-	/* Prof apparently doesn't want us checking this? */
-/*
 	if (coid == -1)
 	{
 		perror("ConnectAttach()");
 		exit(EXIT_FAILURE);
 	}
-*/
 
 	status = MsgSend(coid, &msg, sizeof(client_send_t), &rsp, sizeof(server_response_t));
 	switch (status)

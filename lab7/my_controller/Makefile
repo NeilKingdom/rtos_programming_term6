@@ -1,4 +1,4 @@
-ARTIFACT = myController
+ARTIFACT = my_controller
 
 #Build architecture/variant string, possible values: x86, armv7le, etc...
 PLATFORM ?= x86_64
